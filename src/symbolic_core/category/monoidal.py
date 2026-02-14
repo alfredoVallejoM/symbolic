@@ -1,0 +1,1 @@
+"""Modulo: category/monoidal.py"""

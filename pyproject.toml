@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "symbolic_core"
+version = "0.3.0"
+description = "Kernel Simbólico Holónico"
+authors = [{name = "Alfred", email = "alfred@symbolic.core"}]
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+addopts = "-v"
+
