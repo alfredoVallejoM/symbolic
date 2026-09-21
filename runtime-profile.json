@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "project": "symbolic",
+  "toolchains": {
+    "python": true
+  },
+  "hydration": [
+    {
+      "id": "python-dev",
+      "command": "{python} -m pip install pytest && {python} -m pip install -e .",
+      "fingerprints": [
+        "pyproject.toml"
+      ],
+      "required": true
+    }
+  ],
+  "obligations": [
+    {
+      "id": "SRC-ARCH",
+      "level": "source",
+      "kind": "manual",
+      "required": true,
+      "description": "Review symbolic architecture, dependency boundaries, invariants and obligation-to-implementation mapping without delegating closure to scripts."
+    },
+    {
+      "id": "ADV-REVIEW",
+      "level": "adversarial",
+      "kind": "manual",
+      "required": true,
+      "description": "Perform an obligation-by-obligation adversarial review, including negative cases and accidental-complexity inspection."
+    },
+    {
+      "id": "PERF-LEDGER",
+      "level": "performance",
+      "kind": "manual",
+      "required": true,
+      "description": "Run representative scaling/resource measurements and record time, peak memory, allocations/copies and empirical scaling; compilation alone is not performance certification."
+    },
+    {
+      "id": "REL-CLOSURE",
+      "level": "release",
+      "kind": "manual",
+      "required": true,
+      "description": "Manually reconcile planned obligations against implementation and executable evidence before declaring a campaign or release closed."
+    },
+    {
+      "id": "EXE-COMPILE",
+      "level": "execution",
+      "kind": "command",
+      "required": true,
+      "command": "{python} -m compileall -q src",
+      "description": "Compile Python symbolic kernel."
+    },
+    {
+      "id": "REG-PY",
+      "level": "regression",
+      "kind": "command",
+      "required": true,
+      "command": "{python} -m pytest -q",
+      "description": "Run holonomic symbolic regressions."
+    },
+    {
+      "id": "XCHK-CAS",
+      "level": "crosscheck",
+      "kind": "manual",
+      "required": true,
+      "description": "Cross-check exact symbolic identities against an independent CAS on frozen corpora."
+    }
+  ]
+}
